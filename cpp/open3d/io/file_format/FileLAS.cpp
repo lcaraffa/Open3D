@@ -24,37 +24,36 @@
 // IN THE SOFTWARE.
 // ----------------------------------------------------------------------------
 
-#pragma once
+#include <rply.h>
 
-#include <string>
+#include "open3d/io/FileFormatIO.h"
+#include "open3d/io/LineSetIO.h"
+#include "open3d/io/PointCloudIO.h"
+#include "open3d/io/TriangleMeshIO.h"
+#include "open3d/io/VoxelGridIO.h"
+#include "open3d/utility/Logging.h"
+#include "open3d/utility/ProgressBar.h"
+#include "open3d/utility/ProgressReporters.h"
 
 namespace open3d {
+
 namespace io {
 
-enum FileGeometry {
-    CONTENTS_UNKNOWN = 0,
-    CONTAINS_POINTS = (1 << 0),
-    CONTAINS_LINES = (1 << 1),
-    CONTAINS_TRIANGLES = (1 << 2),
-};
+/// @cond
+namespace {
 
-/// Returns the kind of geometry that the file contains. This is a quick
-/// function designed to query the file in order to determine whether to
-/// call ReadTriangleMesh(), ReadLineSet(), or ReadPointCloud()
-FileGeometry ReadFileGeometryType(const std::string& path);
 
-FileGeometry ReadFileGeometryTypeGLTF(const std::string& path);
-FileGeometry ReadFileGeometryTypeOBJ(const std::string& path);
-FileGeometry ReadFileGeometryTypeFBX(const std::string& path);
-FileGeometry ReadFileGeometryTypeOFF(const std::string& path);
-FileGeometry ReadFileGeometryTypePCD(const std::string& path);
-FileGeometry ReadFileGeometryTypePLY(const std::string& path);
-FileGeometry ReadFileGeometryTypeLAS(const std::string& path);
-FileGeometry ReadFileGeometryTypePTS(const std::string& path);
-FileGeometry ReadFileGeometryTypeSTL(const std::string& path);
-FileGeometry ReadFileGeometryTypeXYZ(const std::string& path);
-FileGeometry ReadFileGeometryTypeXYZN(const std::string& path);
-FileGeometry ReadFileGeometryTypeXYZRGB(const std::string& path);
+
+bool ReadPointCloudFromLAS(const std::string &filename,
+                           geometry::PointCloud &pointcloud,
+                           const ReadPointCloudOption &params) {
+    using namespace ply_pointcloud_reader;
+
+
+    return true;
+}
+
+
 
 }  // namespace io
 }  // namespace open3d

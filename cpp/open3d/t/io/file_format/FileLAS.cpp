@@ -24,37 +24,39 @@
 // IN THE SOFTWARE.
 // ----------------------------------------------------------------------------
 
-#pragma once
 
-#include <string>
+
+#include <vector>
+
+#include "open3d/core/Dtype.h"
+#include "open3d/core/Tensor.h"
+#include "open3d/io/FileFormatIO.h"
+#include "open3d/t/geometry/TensorMap.h"
+#include "open3d/t/io/PointCloudIO.h"
+#include "open3d/utility/FileSystem.h"
+#include "open3d/utility/Logging.h"
+#include "open3d/utility/ProgressReporters.h"
+
+// #define USE_AS_DLL
+// #include <lasreader_las.hpp>
+// #undef USE_AS_DLL
 
 namespace open3d {
+namespace t {
 namespace io {
 
-enum FileGeometry {
-    CONTENTS_UNKNOWN = 0,
-    CONTAINS_POINTS = (1 << 0),
-    CONTAINS_LINES = (1 << 1),
-    CONTAINS_TRIANGLES = (1 << 2),
-};
 
-/// Returns the kind of geometry that the file contains. This is a quick
-/// function designed to query the file in order to determine whether to
-/// call ReadTriangleMesh(), ReadLineSet(), or ReadPointCloud()
-FileGeometry ReadFileGeometryType(const std::string& path);
 
-FileGeometry ReadFileGeometryTypeGLTF(const std::string& path);
-FileGeometry ReadFileGeometryTypeOBJ(const std::string& path);
-FileGeometry ReadFileGeometryTypeFBX(const std::string& path);
-FileGeometry ReadFileGeometryTypeOFF(const std::string& path);
-FileGeometry ReadFileGeometryTypePCD(const std::string& path);
-FileGeometry ReadFileGeometryTypePLY(const std::string& path);
-FileGeometry ReadFileGeometryTypeLAS(const std::string& path);
-FileGeometry ReadFileGeometryTypePTS(const std::string& path);
-FileGeometry ReadFileGeometryTypeSTL(const std::string& path);
-FileGeometry ReadFileGeometryTypeXYZ(const std::string& path);
-FileGeometry ReadFileGeometryTypeXYZN(const std::string& path);
-FileGeometry ReadFileGeometryTypeXYZRGB(const std::string& path);
+bool ReadPointCloudFromLAS(const std::string &filename,
+                           geometry::PointCloud &pointcloud,
+                           const open3d::io::ReadPointCloudOption &params) {
+
+
+    return true;
+}
+
+
 
 }  // namespace io
+}  // namespace t
 }  // namespace open3d

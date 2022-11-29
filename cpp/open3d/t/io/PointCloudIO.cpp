@@ -53,6 +53,7 @@ static const std::unordered_map<
                 {"xyzrgb", ReadPointCloudFromTXT},
                 {"pcd", ReadPointCloudFromPCD},
                 {"ply", ReadPointCloudFromPLY},
+		{"las", ReadPointCloudFromLAS},
                 {"pts", ReadPointCloudFromPTS},
         };
 
